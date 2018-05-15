@@ -1,0 +1,12 @@
+C:\Users\Szymon\source\repos\AvoiderGame\AvoiderGame\bin\Debug\AvoiderGame.exe.config
+C:\Users\Szymon\source\repos\AvoiderGame\AvoiderGame\bin\Debug\AvoiderGame.exe
+C:\Users\Szymon\source\repos\AvoiderGame\AvoiderGame\bin\Debug\AvoiderGame.pdb
+C:\Users\Szymon\source\repos\AvoiderGame\AvoiderGame\obj\Debug\AvoiderGame.csprojResolveAssemblyReference.cache
+C:\Users\Szymon\source\repos\AvoiderGame\AvoiderGame\obj\Debug\AvoiderGame.MainForm.resources
+C:\Users\Szymon\source\repos\AvoiderGame\AvoiderGame\obj\Debug\AvoiderGame.Properties.Resources.resources
+C:\Users\Szymon\source\repos\AvoiderGame\AvoiderGame\obj\Debug\AvoiderGame.csproj.GenerateResource.cache
+C:\Users\Szymon\source\repos\AvoiderGame\AvoiderGame\obj\Debug\AvoiderGame.csproj.CoreCompileInputs.cache
+C:\Users\Szymon\source\repos\AvoiderGame\AvoiderGame\obj\Debug\AvoiderGame.exe
+C:\Users\Szymon\source\repos\AvoiderGame\AvoiderGame\obj\Debug\AvoiderGame.pdb
+C:\Users\Szymon\source\repos\AvoiderGame\AvoiderGame\obj\Debug\AvoiderGame.CreatePlayerForm.resources
+C:\Users\Szymon\source\repos\AvoiderGame\AvoiderGame\obj\Debug\AvoiderGame.GameForm.resources
