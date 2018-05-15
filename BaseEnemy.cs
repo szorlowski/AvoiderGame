@@ -15,6 +15,7 @@ namespace AvoiderGame
             vel = 5;
             size = 10;
             color = Color.Red;
+            power = 1;
             Random r = new Random();
             for (int i = 0; i < 2; i++)
             {
@@ -35,64 +36,5 @@ namespace AvoiderGame
                 }
             }
         }
-
-        public virtual void MoveEnemy(Player player)
-        {
-            int dis = GetVel();
-            if (up)
-            {
-                if (y > 0)
-                {
-                    y -= dis;
-                }
-                else
-                {
-                    SetDown();
-                }
-            }
-            else
-            {
-                if (down)
-                {
-                    // ToDo: handle this error on bottom edge
-                    if (y + 2 * GetSize() < 800)
-                    {
-                        y += dis;
-                    }
-                    else
-                    {
-                        SetUp();
-                    }
-                }
-            }
-
-            if (left)
-            {
-                if (x > 0)
-                {
-                    x -= dis;
-                }
-                else
-                {
-                    SetRight();
-                }
-            }
-            else
-            {
-                if (right)
-                {
-                    if (x + 2 * GetSize() < 1000)
-                    {
-                        x += dis;
-                    }
-                    else
-                    {
-                        SetLeft();
-                    }
-                }
-            }
-
-        }
-
     }
 }

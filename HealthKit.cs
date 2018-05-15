@@ -7,14 +7,14 @@ using System.Drawing;
 
 namespace AvoiderGame
 {
-    class FastEnemy : BaseEnemy
+    class HealthKit : AbstractSquare
     {
-        public FastEnemy()
+        public HealthKit()
         {
-            color = Color.Blue;
-            vel = 10;
-            size = 8;
-            power = 5;
+            vel = 0;
+            color = Color.Pink;
+            power = -5;
+            size = 10;
         }
     }
 }

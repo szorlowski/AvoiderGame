@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace AvoiderGame
 {
-    class SmartEnemy : BaseEnemy
+    class SmartEnemy : AbstractSquare
     {
 
         public SmartEnemy()
@@ -16,11 +16,12 @@ namespace AvoiderGame
             vel = 1;
             size = 12;
             color = Color.Black;
+            power = 100;
         }
 
     // ToDo: find better way to move smart enemy
     override
-    public void MoveEnemy(Player player)
+    public void MoveSquare(Player player)
         {
             if (player.y < y) SetUp();
             if (player.y > y) SetDown();

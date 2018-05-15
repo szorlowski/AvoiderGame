@@ -7,14 +7,16 @@ using System.Drawing;
 
 namespace AvoiderGame
 {
+    public delegate void Alarm(string message);
     public class Player : AbstractSquare
     {
+        public event Alarm LowHealth;
         int maxHp;
         int currentHp;
         protected string name;
         public Player(int vel, string name, int size, int hp)
         {
-            
+
             this.vel = vel;
             this.name = name;
             this.size = size;
@@ -31,6 +33,10 @@ namespace AvoiderGame
 
         public int GetCurrentHp()
         {
+            if (LowHealth != null && currentHp < 5)
+            {
+                LowHealth("Needs health");
+            }
             return currentHp;
         }
 
@@ -49,13 +55,11 @@ namespace AvoiderGame
             return name + ", vel:  " + vel + ", size: " + size;
         }
 
-        public Boolean CheckCollission(BaseEnemy be)
+        public bool CheckCollission(AbstractSquare be)
         {
             Rectangle r1 = new Rectangle(x, y, size, size);
             Rectangle r2 = new Rectangle(be.x, be.y, be.GetSize(), be.GetSize());
             return r1.IntersectsWith(r2);
-
-
         }
     }
 }

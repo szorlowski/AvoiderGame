@@ -54,6 +54,7 @@
       <DependentUpon>CreatePlayerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="FastEnemy.cs" />
+    <Compile Include="HealthKit.cs" />
     <Compile Include="MenuForm.cs">
       <SubType>Form</SubType>
     </Compile>

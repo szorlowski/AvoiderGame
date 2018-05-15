@@ -14,7 +14,7 @@ namespace AvoiderGame
     {
         private long currentScore = 0;
         Player player;
-        ICollection<BaseEnemy> enemies = new List<BaseEnemy>();
+        ICollection<AbstractSquare> enemies = new List<AbstractSquare>();
 
         public GameForm()
         {
@@ -25,6 +25,7 @@ namespace AvoiderGame
         public void StartGame(Player player)
         {
             this.player = player;
+            player.LowHealth += RenderHealthKit;
             this.Show();
         }
 
@@ -32,6 +33,22 @@ namespace AvoiderGame
         {
             ScoreTextBox.Text = currentScore.ToString();
             currentScore += 1;
+        }
+
+        private void RenderHealthKit(string message)
+        {
+            if (message == "Needs health" && currentScore % 200 == 0)
+            {
+                enemies.Add(new HealthKit());
+            }
+        }
+
+        private void StopGame()
+        {
+            Score.Enabled = false;
+            MessageBox.Show("You lost. Score: " + currentScore + "\nEnemies:  " + enemies.Count);
+            this.Close();
+            //ToDo: save score to DB
         }
 
         private void Score_Tick_1(object sender, EventArgs e)
@@ -46,21 +63,20 @@ namespace AvoiderGame
             if (currentScore % 500 == 0)
                 CreateSmartEnemy();
 
-            foreach (BaseEnemy be in enemies.Reverse<BaseEnemy>())
+            foreach (AbstractSquare be in enemies.Reverse<AbstractSquare>())
             {
                 if (player.CheckCollission(be))
                 {
-                    player.SetCurrentHp(player.GetCurrentHp() - 1);
+                    player.SetCurrentHp(player.GetCurrentHp() - be.power);
                     enemies.Remove(be);                    
-                    if(player.GetCurrentHp() == 0)
+                    if(player.GetCurrentHp() <= 0)
                     {
-                        this.Close();
-                        //ToDo: save score to DB
+                        StopGame();
                     }
                 }
                 else
                 {
-                    be.MoveEnemy(player);
+                    be.MoveSquare(player);
                 }
             }
             Invalidate();
@@ -118,7 +134,7 @@ namespace AvoiderGame
         private void GameForm_Paint(object sender, PaintEventArgs e)
         {
             RenderSquare(player, e);
-            foreach (BaseEnemy be in enemies)
+            foreach (AbstractSquare be in enemies)
             {
                 RenderSquare(be, e);
             }

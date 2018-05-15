@@ -13,6 +13,7 @@ namespace AvoiderGame
         protected int vel;
         protected int size;
         protected Color color;
+        public int power;
 
         public Color GetColor()
         {
@@ -72,6 +73,64 @@ namespace AvoiderGame
         {
             left = false;
             right = true;
+        }
+
+        public virtual void MoveSquare(Player player)
+        {
+            int dis = GetVel();
+            if (up)
+            {
+                if (y > 0)
+                {
+                    y -= dis;
+                }
+                else
+                {
+                    SetDown();
+                }
+            }
+            else
+            {
+                if (down)
+                {
+                    // ToDo: handle this error on bottom edge
+                    if (y + 2 * GetSize() < 800)
+                    {
+                        y += dis;
+                    }
+                    else
+                    {
+                        SetUp();
+                    }
+                }
+            }
+
+            if (left)
+            {
+                if (x > 0)
+                {
+                    x -= dis;
+                }
+                else
+                {
+                    SetRight();
+                }
+            }
+            else
+            {
+                if (right)
+                {
+                    if (x + 2 * GetSize() < 1000)
+                    {
+                        x += dis;
+                    }
+                    else
+                    {
+                        SetLeft();
+                    }
+                }
+            }
+
         }
     }
 }
