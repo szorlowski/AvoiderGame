@@ -28,8 +28,9 @@ namespace AvoiderGame
             string Vel = NewVelocityTextbox.Text;
             string Size = NewSizeTextbox.Text;
             string hp = NewHPTextBox.Text;
-            Player NewPlayer = new Player(Int32.Parse(Vel), PlayerName, Int32.Parse(Size), Int32.Parse(hp));
-            // ToDo: add player to DB
+            Player NewPlayer = new Player(Int32.Parse(Vel), PlayerName, Int32.Parse(Size), Int32.Parse(hp), 0);
+            DBConnection.AddPlayerToDB(NewPlayer);
+            DBConnection.CloseConnection();
             this.Close();
         }
 

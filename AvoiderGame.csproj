@@ -58,6 +58,7 @@
     <Compile Include="CreatePlayerForm.Designer.cs">
       <DependentUpon>CreatePlayerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DBConnection.cs" />
     <Compile Include="FastEnemy.cs" />
     <Compile Include="HealthKit.cs" />
     <Compile Include="MenuForm.cs">

@@ -48,7 +48,8 @@ namespace AvoiderGame
             Score.Enabled = false;
             MessageBox.Show("You lost. Score: " + currentScore + "\nEnemies:  " + enemies.Count);
             this.Close();
-            //ToDo: save score to DB
+            if (currentScore > (long)Convert.ToDouble(currentScore));
+            DBConnection.UpdateScore(player, currentScore);
         }
 
         private void Score_Tick_1(object sender, EventArgs e)
@@ -155,5 +156,6 @@ namespace AvoiderGame
             if (e.KeyCode == Keys.Up) player.up = false;
             if (e.KeyCode == Keys.Down) player.down = false;
         }
+
     }
 }

@@ -20,31 +20,33 @@ namespace AvoiderGame
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            // ToDo: get players from db
-            AvoiderGameDataSet ds = new AvoiderGameDataSet();
-            string connection = "Data Source =.\\SQLEXPRESS; Initial Catalog = AvoiderGame; Integrated Security = True";
-            SqlConnection conn = new SqlConnection(connection);
-            SqlCommand sql = new SqlCommand("Select * from Players", conn);
-            conn.Open();
-            SqlDataReader r = sql.ExecuteReader();
+            UpdateList();
+        }
+
+        private void UpdateList()
+        {
+            SqlDataReader r = DBConnection.GetAllPlayers();
+            AllPlayersList.Items.Clear();
             while (r.Read())
             {
                 int vel = (int)r[1];
-                int size = (int) r[2];
-                string name = (string) r[0];
-                int hp = (int) r[3];
-                AllPlayersList.Items.Add(new Player(vel, name, size, hp));
+                int size = (int)r[2];
+                string name = (string)r[0];
+                int hp = (int)r[3];
+                long score = (long)Convert.ToDouble(r[4]);
+                AllPlayersList.Items.Add(new Player(vel, name, size, hp, score));
             }
-            conn.Close();
         }
 
         private void StartGameButton_Click(object sender, EventArgs e)
         {
             Player player = (Player)AllPlayersList.SelectedItem;
-            player.ResetHP();
-            GameForm game = new GameForm();
-            //ToDo: Protect from null
-            game.StartGame(player);
+            if (player != null)
+            {
+                player.ResetHP();
+                GameForm game = new GameForm();
+                game.StartGame(player);
+            }
         }
 
         private void CreatePlayerButton_Click(object sender, EventArgs e)
@@ -52,6 +54,18 @@ namespace AvoiderGame
             Form form = new CreatePlayerForm();
             form.Show();
 
+        }
+
+        private void UpdateButton_Click(object sender, EventArgs e)
+        {
+            UpdateList();
+        }
+
+        private void DeletePlayerButton_Click(object sender, EventArgs e)
+        {
+            Player player = (Player)AllPlayersList.SelectedItem;
+            DBConnection.DeletePlayerFromDB(player);
+            UpdateList();
         }
     }
 }

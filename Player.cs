@@ -14,7 +14,8 @@ namespace AvoiderGame
         int maxHp;
         int currentHp;
         protected string name;
-        public Player(int vel, string name, int size, int hp)
+        private long maxScore;
+        public Player(int vel, string name, int size, int hp, long maxScore)
         {
 
             this.vel = vel;
@@ -23,9 +24,9 @@ namespace AvoiderGame
             color = Color.Green;
             maxHp = hp;
             currentHp = hp;
+            this.maxScore = maxScore;
 
         }
-
         public int getMaxHp()
         {
             return maxHp;
@@ -52,7 +53,7 @@ namespace AvoiderGame
 
         public override string ToString()
         {
-            return name + ", vel:  " + vel + ", size: " + size;
+            return name + ", vel:  " + vel + ", size: " + size + ", max score: " + maxScore;
         }
 
         public bool CheckCollission(AbstractSquare be)
@@ -60,6 +61,16 @@ namespace AvoiderGame
             Rectangle r1 = new Rectangle(x, y, size, size);
             Rectangle r2 = new Rectangle(be.x, be.y, be.GetSize(), be.GetSize());
             return r1.IntersectsWith(r2);
+        }
+
+        public string GetName()
+        {
+            return name;
+        }
+
+        public long GetMaxScore()
+        {
+            return maxScore;
         }
     }
 }

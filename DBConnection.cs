@@ -1,0 +1,62 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace AvoiderGame
+{
+    class DBConnection
+    {
+        private static SqlConnection conn;
+        public static void OpenConnection()
+        {
+            AvoiderGameDataSet ds = new AvoiderGameDataSet();
+            string connection = "Data Source =.\\SQLEXPRESS; Initial Catalog = AvoiderGame; Integrated Security = True; MultipleActiveResultSets=true";
+            SqlConnection conn2 = new SqlConnection(connection);
+            conn = conn2;
+            conn.Open();
+        }
+
+        public static void CloseConnection()
+        {
+            if (conn != null)
+            {
+                conn.Close();
+            }
+        }
+
+        public static SqlDataReader GetAllPlayers()
+        {
+            OpenConnection();
+            SqlCommand sql = new SqlCommand("Select * from Players", conn);
+            return sql.ExecuteReader();
+        }
+
+        public static void UpdateScore(Player player, long score)
+        {
+            OpenConnection();
+            SqlCommand sql = new SqlCommand($"Update Players set Score = {score} where Name = '{player.GetName()}'", conn);
+            sql.ExecuteNonQuery();
+            DBConnection.CloseConnection();
+
+        }
+
+        public static void AddPlayerToDB(Player player)
+        {
+            OpenConnection();
+            SqlCommand sql = new SqlCommand($"insert into Players (Name, Velocity, Size, HP, Score)" +
+                $" values('{player.GetName()}', {player.GetVel()}, {player.GetSize()}, {player.getMaxHp()}, 0)", conn);
+            sql.ExecuteNonQuery();
+            DBConnection.CloseConnection();
+
+        }
+
+        public static void DeletePlayerFromDB(Player player)
+        {
+            SqlCommand sql = new SqlCommand($"delete from Players where Name = '{player.GetName()}'", conn);
+            sql.ExecuteNonQuery();
+        }
+    }
+}
