@@ -39,7 +39,7 @@
             // Score
             // 
             this.Score.Enabled = true;
-            this.Score.Interval = 1;
+            this.Score.Interval = 30;
             this.Score.Tick += new System.EventHandler(this.Score_Tick_1);
             // 
             // label1

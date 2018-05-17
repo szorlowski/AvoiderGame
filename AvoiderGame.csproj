@@ -46,6 +46,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractSquare.cs" />
+    <Compile Include="AvoiderGameDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AvoiderGameDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="BaseEnemy.cs" />
     <Compile Include="CreatePlayerForm.cs">
       <SubType>Form</SubType>
@@ -89,6 +94,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="AvoiderGameDataSet.xsc">
+      <DependentUpon>AvoiderGameDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AvoiderGameDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AvoiderGameDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="AvoiderGameDataSet.xss">
+      <DependentUpon>AvoiderGameDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

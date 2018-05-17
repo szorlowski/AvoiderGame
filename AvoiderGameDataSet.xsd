@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="AvoiderGameDataSet" targetNamespace="http://tempuri.org/AvoiderGameDataSet.xsd" xmlns:mstns="http://tempuri.org/AvoiderGameDataSet.xsd" xmlns="http://tempuri.org/AvoiderGameDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="AvoiderGameConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="AvoiderGameConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.AvoiderGame.Properties.Settings.GlobalReference.Default.AvoiderGameConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="PlayersTableAdapter" GeneratorDataComponentClassName="PlayersTableAdapter" Name="Players" UserDataComponentName="PlayersTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="AvoiderGameConnectionString (Settings)" DbObjectName="AvoiderGame.dbo.Players" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT Name, Velocity, Size, HP, Score FROM dbo.Players</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Name" DataSetColumn="Name" />
+              <Mapping SourceColumn="Velocity" DataSetColumn="Velocity" />
+              <Mapping SourceColumn="Size" DataSetColumn="Size" />
+              <Mapping SourceColumn="HP" DataSetColumn="HP" />
+              <Mapping SourceColumn="Score" DataSetColumn="Score" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="AvoiderGameDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="AvoiderGameDataSet" msprop:Generator_UserDSName="AvoiderGameDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Players" msprop:Generator_TableClassName="PlayersDataTable" msprop:Generator_TableVarName="tablePlayers" msprop:Generator_TablePropName="Players" msprop:Generator_RowDeletingName="PlayersRowDeleting" msprop:Generator_RowChangingName="PlayersRowChanging" msprop:Generator_RowEvHandlerName="PlayersRowChangeEventHandler" msprop:Generator_RowDeletedName="PlayersRowDeleted" msprop:Generator_UserTableName="Players" msprop:Generator_RowChangedName="PlayersRowChanged" msprop:Generator_RowEvArgName="PlayersRowChangeEvent" msprop:Generator_RowClassName="PlayersRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Velocity" msprop:Generator_ColumnVarNameInTable="columnVelocity" msprop:Generator_ColumnPropNameInRow="Velocity" msprop:Generator_ColumnPropNameInTable="VelocityColumn" msprop:Generator_UserColumnName="Velocity" type="xs:int" />
+              <xs:element name="Size" msprop:Generator_ColumnVarNameInTable="columnSize" msprop:Generator_ColumnPropNameInRow="Size" msprop:Generator_ColumnPropNameInTable="SizeColumn" msprop:Generator_UserColumnName="Size" type="xs:int" />
+              <xs:element name="HP" msprop:Generator_ColumnVarNameInTable="columnHP" msprop:Generator_ColumnPropNameInRow="HP" msprop:Generator_ColumnPropNameInTable="HPColumn" msprop:Generator_UserColumnName="HP" type="xs:int" />
+              <xs:element name="Score" msprop:Generator_ColumnVarNameInTable="columnScore" msprop:Generator_ColumnPropNameInRow="Score" msprop:Generator_ColumnPropNameInTable="ScoreColumn" msprop:Generator_UserColumnName="Score" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
