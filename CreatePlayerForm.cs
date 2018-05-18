@@ -89,6 +89,12 @@ namespace AvoiderGame
                 errors.Add("Name is already taken");
             }
 
+            if (PlayerName.ToLower() == "dupa")
+            {
+                IsValid = false;
+                errors.Add("This name is very sad :(");
+            }
+
             if (!CheckSize())
             {
                 IsValid = false;

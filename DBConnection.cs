@@ -13,7 +13,8 @@ namespace AvoiderGame
         private static void OpenConnection()
         {
             AvoiderGameDataSet ds = new AvoiderGameDataSet();
-            string connection = "Data Source =.\\SQLEXPRESS; Initial Catalog = AvoiderGame; Integrated Security = True; MultipleActiveResultSets=true";
+            string connection = "Server = 89.76.149.59,1209; Initial Catalog = AvoiderGame; Integrated Security = false; MultipleActiveResultSets=true;" +
+                "User Id=JohnEgbert; Password =YourPassword; ";
             SqlConnection conn2 = new SqlConnection(connection);
             conn = conn2;
             conn.Open();
