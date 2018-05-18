@@ -118,10 +118,10 @@ namespace AvoiderGame
             else
             {
                 int vel = Int32.Parse(Vel);
-                if (vel > 20 || vel < 2)
+                if (vel > 20 || vel < 5)
                 {
                     IsValid = false;
-                    errors.Add("Velocity must be between 2-20");
+                    errors.Add("Velocity must be between 5-20");
                 }
             }
 

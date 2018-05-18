@@ -77,11 +77,11 @@ namespace AvoiderGame
                 CreateFastEnemy();
             if (currentScore % 500 == 0)
                 CreateSmartEnemy();
-            //if (currentScore % 30 == 0)
-            //{
-            //   UpdateScore();
-             //   UpdateScoreList();
-            //}
+            if (currentScore % 10 == 0)
+            {
+               UpdateScore();
+               UpdateScoreList();
+            }
 
             foreach (AbstractSquare be in enemies.Reverse<AbstractSquare>())
             {

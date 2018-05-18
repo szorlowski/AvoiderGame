@@ -13,7 +13,8 @@ namespace AvoiderGame
 
         public SmartEnemy()
         {
-            vel = 1;
+            Random r = new Random();
+            vel = r.Next(1, 3);
             size = 12;
             color = Color.Black;
             power = 100;

@@ -33,6 +33,7 @@
             this.AllPlayersList = new System.Windows.Forms.ListBox();
             this.UpdateButton = new System.Windows.Forms.Button();
             this.DeletePlayerButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // StartGameButton
@@ -95,12 +96,24 @@
             this.DeletePlayerButton.UseVisualStyleBackColor = false;
             this.DeletePlayerButton.Click += new System.EventHandler(this.DeletePlayerButton_Click);
             // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(299, 42);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(444, 70);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "AVOIDER GAME";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.DeletePlayerButton);
             this.Controls.Add(this.UpdateButton);
             this.Controls.Add(this.AllPlayersList);
@@ -124,6 +137,7 @@
         private System.Windows.Forms.ListBox AllPlayersList;
         private System.Windows.Forms.Button UpdateButton;
         private System.Windows.Forms.Button DeletePlayerButton;
+        private System.Windows.Forms.Label label1;
     }
 }
 
