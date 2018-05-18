@@ -78,8 +78,9 @@
             this.UpdateButton.Name = "UpdateButton";
             this.UpdateButton.Size = new System.Drawing.Size(90, 33);
             this.UpdateButton.TabIndex = 4;
-            this.UpdateButton.Text = "Update";
+            this.UpdateButton.Text = "Refresh";
             this.UpdateButton.UseVisualStyleBackColor = false;
+            this.UpdateButton.Click += new System.EventHandler(this.UpdateButton_Click_1);
             // 
             // DeletePlayerButton
             // 

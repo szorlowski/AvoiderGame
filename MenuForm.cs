@@ -56,15 +56,15 @@ namespace AvoiderGame
 
         }
 
-        private void UpdateButton_Click(object sender, EventArgs e)
-        {
-            UpdateList();
-        }
-
         private void DeletePlayerButton_Click(object sender, EventArgs e)
         {
             Player player = (Player)AllPlayersList.SelectedItem;
             DBConnection.DeletePlayerFromDB(player);
+            UpdateList();
+        }
+
+        private void UpdateButton_Click_1(object sender, EventArgs e)
+        {
             UpdateList();
         }
     }

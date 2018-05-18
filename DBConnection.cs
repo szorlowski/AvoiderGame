@@ -55,8 +55,19 @@ namespace AvoiderGame
 
         public static void DeletePlayerFromDB(Player player)
         {
-            SqlCommand sql = new SqlCommand($"delete from Players where Name = '{player.GetName()}'", conn);
-            sql.ExecuteNonQuery();
+            if(player != null)
+            {
+                SqlCommand sql = new SqlCommand($"delete from Players where Name = '{player.GetName()}'", conn);
+                sql.ExecuteNonQuery();
+            }
+        }
+
+        public static bool DoesNameExist(string name)
+        {
+            OpenConnection();
+            SqlCommand sql = new SqlCommand($"select count(Name) from Players where Name = '{name}'", conn);
+            int rows = (int)sql.ExecuteScalar();
+            return rows > 0;
         }
     }
 }
