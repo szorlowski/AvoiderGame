@@ -31,8 +31,8 @@ namespace AvoiderGame
         private void RandomizeLocation()
         {
             Random r = new Random();
-            x = r.Next(1000 - size * 3);
-            y = r.Next(800 - size * 3);
+            x = r.Next(GameForm.lBorder, GameForm.rBorder);
+            y = r.Next(GameForm.tBorder, GameForm.bBorder);
         }
 
 
@@ -80,7 +80,7 @@ namespace AvoiderGame
             int dis = GetVel();
             if (up)
             {
-                if (y > 0)
+                if (y > GameForm.tBorder)
                 {
                     y -= dis;
                 }
@@ -94,7 +94,7 @@ namespace AvoiderGame
                 if (down)
                 {
                     // ToDo: handle this error on bottom edge
-                    if (y + 2 * GetSize() < 800)
+                    if (y < GameForm.bBorder)
                     {
                         y += dis;
                     }
@@ -107,7 +107,7 @@ namespace AvoiderGame
 
             if (left)
             {
-                if (x > 0)
+                if (x > GameForm.lBorder)
                 {
                     x -= dis;
                 }
@@ -120,7 +120,7 @@ namespace AvoiderGame
             {
                 if (right)
                 {
-                    if (x + 2 * GetSize() < 1000)
+                    if (x < GameForm.rBorder)
                     {
                         x += dis;
                     }

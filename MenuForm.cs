@@ -36,6 +36,7 @@ namespace AvoiderGame
                 long score = (long)Convert.ToDouble(r[4]);
                 AllPlayersList.Items.Add(new Player(vel, name, size, hp, score));
             }
+            AllPlayersList.Sorted = true;
         }
 
         private void StartGameButton_Click(object sender, EventArgs e)

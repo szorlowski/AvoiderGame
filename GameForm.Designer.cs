@@ -34,6 +34,8 @@
             this.ScoreTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.HPTextBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.Ranking_List = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // Score
@@ -45,7 +47,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(869, 9);
+            this.label1.Location = new System.Drawing.Point(1369, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 1;
@@ -54,7 +56,7 @@
             // ScoreTextBox
             // 
             this.ScoreTextBox.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.ScoreTextBox.Location = new System.Drawing.Point(872, 25);
+            this.ScoreTextBox.Location = new System.Drawing.Point(1372, 25);
             this.ScoreTextBox.Name = "ScoreTextBox";
             this.ScoreTextBox.ReadOnly = true;
             this.ScoreTextBox.Size = new System.Drawing.Size(100, 20);
@@ -63,7 +65,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(869, 48);
+            this.label2.Location = new System.Drawing.Point(1369, 48);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(22, 13);
             this.label2.TabIndex = 2;
@@ -71,27 +73,47 @@
             // 
             // HPTextBox
             // 
-            this.HPTextBox.Location = new System.Drawing.Point(872, 64);
+            this.HPTextBox.Location = new System.Drawing.Point(1372, 64);
             this.HPTextBox.Name = "HPTextBox";
             this.HPTextBox.ReadOnly = true;
             this.HPTextBox.Size = new System.Drawing.Size(100, 20);
             this.HPTextBox.TabIndex = 3;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(47, 13);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Ranking";
+            // 
+            // Ranking_List
+            // 
+            this.Ranking_List.FormattingEnabled = true;
+            this.Ranking_List.Location = new System.Drawing.Point(15, 25);
+            this.Ranking_List.Name = "Ranking_List";
+            this.Ranking_List.Size = new System.Drawing.Size(284, 719);
+            this.Ranking_List.TabIndex = 5;
             // 
             // GameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(984, 761);
+            this.ClientSize = new System.Drawing.Size(1484, 761);
+            this.Controls.Add(this.Ranking_List);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.HPTextBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ScoreTextBox);
-            this.MaximumSize = new System.Drawing.Size(1000, 800);
-            this.MinimumSize = new System.Drawing.Size(1000, 800);
+            this.MaximumSize = new System.Drawing.Size(1500, 800);
+            this.MinimumSize = new System.Drawing.Size(1500, 800);
             this.Name = "GameForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GameForm";
+            this.Load += new System.EventHandler(this.GameForm_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.GameForm_Paint);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GameForm_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.GameForm_KeyUp);
@@ -107,5 +129,7 @@
         private System.Windows.Forms.TextBox ScoreTextBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox HPTextBox;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ListBox Ranking_List;
     }
 }

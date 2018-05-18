@@ -10,7 +10,7 @@ namespace AvoiderGame
     class DBConnection
     {
         private static SqlConnection conn;
-        public static void OpenConnection()
+        private static void OpenConnection()
         {
             AvoiderGameDataSet ds = new AvoiderGameDataSet();
             string connection = "Data Source =.\\SQLEXPRESS; Initial Catalog = AvoiderGame; Integrated Security = True; MultipleActiveResultSets=true";

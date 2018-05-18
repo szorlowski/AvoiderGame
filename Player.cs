@@ -53,7 +53,7 @@ namespace AvoiderGame
 
         public override string ToString()
         {
-            return name + ", vel:  " + vel + ", size: " + size + ", max score: " + maxScore;
+            return name + ", vel:  " + vel + ", size: " + size + ", health: " + maxHp + ", max score: " + maxScore;
         }
 
         public bool CheckCollission(AbstractSquare be)

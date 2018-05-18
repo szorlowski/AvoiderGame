@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +14,11 @@ namespace AvoiderGame
 {
     public partial class GameForm : Form
     {
+        public readonly static int lBorder = 350;
+        public readonly static int rBorder = 1350;
+        public readonly static int tBorder = 50;
+        public readonly static int bBorder = 720;
+
         private long currentScore = 0;
         Player player;
         ICollection<AbstractSquare> enemies = new List<AbstractSquare>();
@@ -48,8 +55,15 @@ namespace AvoiderGame
             Score.Enabled = false;
             MessageBox.Show("You lost. Score: " + currentScore + "\nEnemies:  " + enemies.Count);
             this.Close();
-            if (currentScore > (long)Convert.ToDouble(currentScore));
-            DBConnection.UpdateScore(player, currentScore);
+            UpdateScore();
+        }
+
+        private void UpdateScore()
+        {
+            if (currentScore > player.GetMaxScore())
+            {
+                DBConnection.UpdateScore(player, currentScore);
+            }
         }
 
         private void Score_Tick_1(object sender, EventArgs e)
@@ -63,14 +77,19 @@ namespace AvoiderGame
                 CreateFastEnemy();
             if (currentScore % 500 == 0)
                 CreateSmartEnemy();
+            if (currentScore % 30 == 0)
+            {
+                UpdateScore();
+                UpdateScoreList();
+            }
 
             foreach (AbstractSquare be in enemies.Reverse<AbstractSquare>())
             {
                 if (player.CheckCollission(be))
                 {
                     player.SetCurrentHp(player.GetCurrentHp() - be.power);
-                    enemies.Remove(be);                    
-                    if(player.GetCurrentHp() <= 0)
+                    enemies.Remove(be);
+                    if (player.GetCurrentHp() <= 0)
                     {
                         StopGame();
                     }
@@ -103,27 +122,27 @@ namespace AvoiderGame
             int dis = player.GetVel();
             if (player.up)
             {
-                if (player.y > 0)
+                if (player.y > tBorder)
                     player.y -= dis;
             }
             if (player.down)
             {
                 // ToDo: handle this error on bottom edge
-                if (player.y + 2 * player.GetSize() < this.Height)
+                if (player.y + player.GetSize() < bBorder)
                     player.y += dis;
             }
             if (player.left)
             {
-                if (player.x > 0)
+                if (player.x > lBorder)
                     player.x -= dis;
             }
             if (player.right)
             {
-                if (player.x + 2 * player.GetSize() < this.Width)
+                if (player.x + player.GetSize() < rBorder)
                     player.x += dis;
             }
         }
-        
+
 
         private void RenderSquare(AbstractSquare square, PaintEventArgs e)
         {
@@ -139,6 +158,8 @@ namespace AvoiderGame
             {
                 RenderSquare(be, e);
             }
+
+            Pen pen = new Pen(Color.Black);
         }
 
         private void GameForm_KeyDown(object sender, KeyEventArgs e)
@@ -157,5 +178,30 @@ namespace AvoiderGame
             if (e.KeyCode == Keys.Down) player.down = false;
         }
 
+        private void UpdateScoreList()
+        {
+            List<Player> list = new List<Player>();
+            SqlDataReader r = DBConnection.GetAllPlayers();
+            Ranking_List.Items.Clear();
+            while (r.Read())
+            {
+                int vel = (int)r[1];
+                int size = (int)r[2];
+                string name = (string)r[0];
+                int hp = (int)r[3];
+                long score = (long)Convert.ToDouble(r[4]);
+                list.Add(new Player(vel, name, size, hp, score));
+            }
+            list = list.OrderByDescending(p => p.GetMaxScore()).ToList();        
+            foreach(Player player in list)
+            {
+                Ranking_List.Items.Add(player);
+            }
+        }
+
+        private void GameForm_Load(object sender, EventArgs e)
+        {
+            UpdateScoreList();
+        }
     }
 }
