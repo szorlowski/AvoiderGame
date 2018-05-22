@@ -70,5 +70,12 @@ namespace AvoiderGame
             int rows = (int)sql.ExecuteScalar();
             return rows > 0;
         }
+
+		public static int NumOfPlayers()
+		{
+			OpenConnection();
+			SqlCommand sql = new SqlCommand($"select count(*) from Players", conn);
+			return (int)sql.ExecuteScalar();
+		}
     }
 }

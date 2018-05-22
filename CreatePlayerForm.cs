@@ -28,6 +28,11 @@ namespace AvoiderGame
             this.Close();
         }
 
+		private bool IsMaxPlayers()
+		{
+			return DBConnection.NumOfPlayers() >= 20;
+		}
+
         private void CreatePlayerButton_Click(object sender, EventArgs e)
         {
             errors = new List<string>();
@@ -37,10 +42,18 @@ namespace AvoiderGame
             hp = NewHPTextBox.Text;
             if (IsValid())
             {
-                Player NewPlayer = new Player(Int32.Parse(Vel), PlayerName, Int32.Parse(Size), Int32.Parse(hp), 0);
-                DBConnection.AddPlayerToDB(NewPlayer);
-                DBConnection.CloseConnection();
-                this.Close();
+				if (!IsMaxPlayers())
+				{
+					Player NewPlayer = new Player(Int32.Parse(Vel), PlayerName, Int32.Parse(Size), Int32.Parse(hp), 0);
+					DBConnection.AddPlayerToDB(NewPlayer);
+					DBConnection.CloseConnection();
+					this.Close();
+				}
+				else
+				{
+					MessageBox.Show("There is maximum players: 20");
+				}
+
             }
             else
             {
@@ -142,7 +155,5 @@ namespace AvoiderGame
 
             return IsValid;
         }
-
-
-    }
+	}
 }
