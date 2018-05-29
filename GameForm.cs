@@ -88,6 +88,11 @@ namespace AvoiderGame
 				UpdateScoreBoard();
 			}
 
+			if (currentScore % 10 == 0)
+			{
+				UpdateScoreBoard();
+			}
+
 			if (currentScore % 300 == 0)
 				CreateFastEnemy();
 			if (currentScore % 500 == 0)
@@ -160,7 +165,9 @@ namespace AvoiderGame
 		{
 			Brush myBrush = new SolidBrush(square.GetColor());
 			int size = square.GetSize();
-			e.Graphics.FillRectangle(myBrush, new Rectangle(square.x, square.y, size, size));
+			Rectangle rectangle = new Rectangle(square.x, square.y, size, size);
+			e.Graphics.FillRectangle(myBrush, rectangle);
+
 		}
 
 		private void GameForm_Paint(object sender, PaintEventArgs e)
@@ -170,8 +177,6 @@ namespace AvoiderGame
 			{
 				RenderSquare(be, e);
 			}
-
-			Pen pen = new Pen(Color.Black);
 		}
 
 		private void GameForm_KeyDown(object sender, KeyEventArgs e)
